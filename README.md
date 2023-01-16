@@ -12,6 +12,10 @@ Additionally, the notebook visulizes the computed bigram statistics.
 
 Happy coding! In case of ideas, questions or bugs, please reach out at [mail@timonschneider.de](mailto:mail@timonschneider.de)
 
+## ToDo
+
+- [ ] Change the model to use Bayesian instead of descriptive statistics
+
 ## Acknowledgements
 
 This repository was inspired by adapting [Andrej Kaparthy's makemore](https://github.com/karpathy/makemore) to protein sequences.
