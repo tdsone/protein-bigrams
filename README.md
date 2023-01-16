@@ -12,9 +12,14 @@ Additionally, the notebook visulizes the computed bigram statistics.
 
 Happy coding! In case of ideas, questions or bugs, please reach out at [mail@timonschneider.de](mailto:mail@timonschneider.de)
 
-## ToDo
+## Further ideas
 
-- [ ] Change the model to use Bayesian instead of descriptive statistics
+- [ ] Change the model to use Bayesian instead of descriptive statistics (i.e. start with some prior and update it based on data)
+- [ ] Provide computed bigram statistics with repo
+- [ ] n-gram statistics (n > 2)
+- [ ] Compute a bunch of structures and check how they look
+- [ ] Phenotype -> Genotype: build function that maps sequence properties (e.g. organism) to a bigram statistic by only using data for which sequence properties apply
+  - [ ] Evaluate generated sequences by using a classifier that predicts the sequence properties
 
 ## Acknowledgements
 
