@@ -5,7 +5,7 @@ This repository contains a small bigram language model for protein sequences. Th
 ## Usage
 
 1. Install all requirements
-2. Donwload the dataset using the `download_dataset.py` script (approx. 6.8GB download and XXGB unzipped). For convenience, use `tmux` to run the script in the background.
+2. Download the dataset using the `download_dataset.py` script (approx. 6.8GB download and XXGB unzipped). For convenience, use `tmux` to run the script in the background.
 3. Run `main.py` to train the model and generate sequences
 
 Additionally, the notebook visulizes the computed bigram statistics.
