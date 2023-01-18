@@ -89,6 +89,8 @@ if __name__ == '__main__':
     # run pipeline to generate 100 proteins
     proteins, bigram_probs = run_pipeline(count=100)
     
-    from pprint import pprint
-    pprint(proteins)
+    from datetime import datetime
     
+    with open(f'generations/preds-{datetime.now()}.fasta', 'w+') as f:
+        for idx, protein in enumerate(proteins):
+            f.write(f">seq{idx}\n{protein}\n")
