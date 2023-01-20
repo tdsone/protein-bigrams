@@ -24,9 +24,12 @@ def get_token_idx_map(tokens):
     itot = {value: key for key, value in ttoi.items()}
     return ttoi, itot
 
+def calc_bigram_counts_no_prior(entries, token_to_idx, tokens):
+    return _calc_bigram_counts(entries, token_to_idx, prior=torch.zeros(len(tokens), len(tokens)))
+
 # calculate bigram counts
-def calc_bigram_counts(entries, token_to_idx, tokens) -> torch.tensor:
-    bigram_counts = torch.zeros(len(tokens), len(tokens))
+def _calc_bigram_counts(entries, token_to_idx, prior: torch.tensor) -> torch.tensor:
+    bigram_counts = prior
 
     for record in entries:
         seq = "." + record.seq + "."
@@ -72,22 +75,23 @@ def generate_proteins(ttoi, itot, bigram_probs, count):
     
     return sequences
 
-def run_pipeline(count=100):
+def run_pipeline(input: str, count=100):
     # read all uniref entries into array
-    entries = get_entries_from_fasta(path='data/example.fasta')
+    entries = get_entries_from_fasta(path=input)
     
     # build index maps for tokens
     ttoi, itot = get_token_idx_map(TOKENS)
     
     # build bigram
-    bigram_counts = calc_bigram_counts(entries, ttoi, TOKENS)
+    bigram_counts = calc_bigram_counts_no_prior(entries, ttoi, TOKENS)
     bigram_probs = get_probs_from_counts(bigram_counts)
     
     return generate_proteins(ttoi, itot, bigram_probs, count), bigram_probs
 
 if __name__ == '__main__':
     # run pipeline to generate 100 proteins
-    proteins, bigram_probs = run_pipeline(count=100)
+
+    proteins, bigram_probs = run_pipeline(count=100, input='data/train.fasta')
     
     from datetime import datetime
     
